@@ -129,7 +129,7 @@ class SignUp @Inject()(cc: ControllerComponents)(ws: WSClient) extends AbstractC
           val profile = StartupProfile.profilesById(userInput.profileId)
           profile.initializeAirline(newAirline)
           println("checkpoint 5")
-          // Redirect("/")
+          Redirect("/")
         } else {
           BadRequest("Recaptcha check failed!")
         }
