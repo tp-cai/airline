@@ -8,7 +8,7 @@ GET		/test						controllers.Application.test
 ## GET		/chat						controllers.ChatApplication.chatSocket
 
 #Web Socket management
-GET		/wsWithActor						controllers.WebsocketApplication.wsWithActor
+## GET		/wsWithActor						controllers.WebsocketApplication.wsWithActor
 
 POST	 /login							  controllers.UserApplication.login
 POST	 /logout						  controllers.UserApplication.logout
