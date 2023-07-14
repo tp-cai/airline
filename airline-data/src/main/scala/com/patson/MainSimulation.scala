@@ -14,7 +14,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration.Duration
 
 object MainSimulation extends App {
-  val CYCLE_DURATION : Int = 30 * 60
+  val CYCLE_DURATION : Int = 1 * 20
   var currentWeek: Int = 0
 
 //  implicit val actorSystem = ActorSystem("rabbit-akka-stream")
@@ -48,6 +48,10 @@ object MainSimulation extends App {
       invalidateCaches()
 
       UserSimulation.simulate(cycle)
+      println("Oil simulation")
+      OilSimulation.simulate(cycle)
+      println("Loan simulation")
+      LoanInterestRateSimulation.simulate(cycle)
       println("Event simulation")
       EventSimulation.simulate(cycle)
 
