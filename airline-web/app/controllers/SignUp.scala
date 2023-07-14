@@ -110,7 +110,8 @@ class SignUp @Inject()(cc: ControllerComponents)(ws: WSClient) extends AbstractC
       // Form has errors, redisplay it
       errors => BadRequest(html.signup(errors)), { userInput =>
         
-        if (isValidRecaptcha(userInput.recaptchaToken)) {
+        // if (isValidRecaptcha(userInput.recaptchaToken)) {
+        if (true) {
           // We got a valid User value, display the summary
           val user = User(userInput.username, userInput.email, Calendar.getInstance, Calendar.getInstance, UserStatus.ACTIVE, level = 0)
           UserSource.saveUser(user)
