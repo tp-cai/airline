@@ -109,26 +109,26 @@ class SignUp @Inject()(cc: ControllerComponents)(ws: WSClient) extends AbstractC
     signupForm.bindFromRequest.fold(
       // Form has errors, redisplay it
       errors => BadRequest(html.signup(errors)), { userInput =>
-        
+        println("checkpoint 1")
         // if (isValidRecaptcha(userInput.recaptchaToken)) {
         if (true) {
           // We got a valid User value, display the summary
           val user = User(userInput.username, userInput.email, Calendar.getInstance, Calendar.getInstance, UserStatus.ACTIVE, level = 0)
           UserSource.saveUser(user)
           Authentication.createUserSecret(userInput.username, userInput.password)
-          
+          println("checkpoint 2")
           val newAirline = Airline(userInput.airlineName)
 //          newAirline.setBalance(50000000) //initial balance 50 million
           newAirline.setMaintenanceQuality(100)
           newAirline.setAirlineCode(newAirline.getDefaultAirlineCode())
           AirlineSource.saveAirlines(List(newAirline))
           UserSource.setUserAirline(user, newAirline)
-
+          println("checkpoint 3")
           SearchUtil.addAirline(newAirline)
-          
+          println("checkpoint 4")
           val profile = StartupProfile.profilesById(userInput.profileId)
           profile.initializeAirline(newAirline)
-          
+          println("checkpoint 5")
           Redirect("/")
         } else {
           BadRequest("Recaptcha check failed!")
