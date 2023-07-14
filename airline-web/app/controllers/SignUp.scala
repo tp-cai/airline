@@ -107,6 +107,7 @@ class SignUp @Inject()(cc: ControllerComponents)(ws: WSClient) extends AbstractC
    */
   def submit = Action { implicit request =>
     signupForm.bindFromRequest.fold(
+      println("checkpoint 0")
       // Form has errors, redisplay it
       errors => BadRequest(html.signup(errors)), { userInput =>
         println("checkpoint 1")
