@@ -120,7 +120,7 @@ class SignUp @Inject()(cc: ControllerComponents)(ws: WSClient) extends AbstractC
           val newAirline = Airline(userInput.airlineName)
 //          newAirline.setBalance(50000000) //initial balance 50 million
           newAirline.setMaintenanceQuality(100)
-          newAirline.setAirlineCode(newAirline.getDefaultAirlineCode())
+          // newAirline.setAirlineCode(newAirline.getDefaultAirlineCode())
           AirlineSource.saveAirlines(List(newAirline))
           UserSource.setUserAirline(user, newAirline)
           println("checkpoint 3")

@@ -677,16 +677,22 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
       
       if (airlineCode.length != 2) {
         BadRequest("Should be 2 characters") 
-      } else if (airlineCode.filter(Character.isLetter(_)).length != 2) {
-        BadRequest("Should be all letters")
+      } else if (airlineCode.filter(Character.isLetterOrDigit(_)).length != 2 && airlineCode.exists(_.isLetter)) {
+        BadRequest("Should be all letters and numbers, at least one letter should be included")
       } 
       
       airlineCode = airlineCode.toUpperCase()
       
       val airline = request.user
-      airline.setAirlineCode(airlineCode)
-      AirlineSource.saveAirlineCode(airlineId, airlineCode)
-      Ok(Json.toJson(airline))
+      try {
+        airline.setAirlineCode(airlineCode)
+        AirlineSource.saveAirlineCode(airlineId, airlineCode)
+        Ok(Json.toJson(airline))
+      } catch {
+        case ex: Exception =>
+          println(s"Error: ${ex.getMessage}")
+          BadRequest("Cannot Set airline Code! Check the rules!")
+      }
     } else {
       BadRequest("Cannot Set airline Code")
     }

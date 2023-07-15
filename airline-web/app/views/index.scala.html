@@ -1368,7 +1368,7 @@
                                             <span id="airlineCodeInputSpan" style="display: none;">
                                                 <input id="airlineCodeInput" type="text" onkeyup="validateAirlineCode($(this).val())"/>
                                                 <img src='@routes.Assets.versioned("images/icons/tick.png")' class='button' style="vertical-align: middle;" onclick="setAirlineCode($('#airlineCodeInput').val())"/>
-                                                <span class="warning" style="display:none;">Code should be exactly 2 letters</span>
+                                                <span class="warning" style="display:none;">Code should be exactly 2 letters/number, at least 1 letter should be included. Change will fail if it's used by another airline.</span>
                                             </span>
                                         </div>
                                     </div>

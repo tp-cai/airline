@@ -152,23 +152,23 @@ case class Airline(name: String, isGenerated : Boolean = false, var id : Int = 0
   def getReputation() = airlineInfo.reputation
   def getMaintenanceQuality() = airlineInfo.maintenanceQuality
 
-  def getDefaultAirlineCode() : String = {
-    var code = name.split("\\s+").foldLeft("")( (foldString, nameToken) => {
-      val firstCharacter = nameToken.charAt(0)
-      if (Character.isLetter(firstCharacter)) {
-        foldString + firstCharacter.toUpper
-      } else {
-        foldString
-      }
-    })
+  // def getDefaultAirlineCode() : String = {
+  //   var code = name.split("\\s+").foldLeft("")( (foldString, nameToken) => {
+  //     val firstCharacter = nameToken.charAt(0)
+  //     if (Character.isLetter(firstCharacter)) {
+  //       foldString + firstCharacter.toUpper
+  //     } else {
+  //       foldString
+  //     }
+  //   })
 
-    if (code.length() > 2) {
-      code = code.substring(0, 2)
-    } else if (code.length() < 2) {
-      code = name.substring(0, 2).toUpperCase()
-    }
-    code
-  }
+  //   if (code.length() > 2) {
+  //     code = code.substring(0, 2)
+  //   } else if (code.length() < 2) {
+  //     code = name.substring(0, 2).toUpperCase()
+  //   }
+  //   code
+  // }
 }
 
 case class AirlineInfo(var balance : Long, var currentServiceQuality : Double, var maintenanceQuality : Double, var targetServiceQuality : Int, var reputation : Double, var countryCode : Option[String] = None, var airlineCode : String = "")
