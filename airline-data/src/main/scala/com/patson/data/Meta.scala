@@ -216,6 +216,7 @@ object Meta {
       "airline_code CHAR(2)," +
       "color CHAR(7)," +
       "FOREIGN KEY(airline) REFERENCES " + AIRLINE_TABLE + "(id) ON DELETE CASCADE ON UPDATE CASCADE" +
+      "UNIQUE KEY `uc_airline_code` (`airline_code`),                                                                           |
       ")")
 
     statement.execute()

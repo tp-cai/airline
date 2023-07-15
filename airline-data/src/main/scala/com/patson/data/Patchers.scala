@@ -120,13 +120,13 @@ object Patchers {
     connection.close
   }
   
-  def patchAirlineCode() = {
-    AirlineSource.loadAllAirlines(false).foreach { airline =>
-      val code = airline.getDefaultAirlineCode
-      println(code)
-      AirlineSource.saveAirlineCode(airline.id, code)
-    }
-  }
+  // def patchAirlineCode() = {
+  //   AirlineSource.loadAllAirlines(false).foreach { airline =>
+  //     val code = airline.getDefaultAirlineCode
+  //     println(code)
+  //     AirlineSource.saveAirlineCode(airline.id, code)
+  //   }
+  // }
   
   def patchFlightNumber() = {
     AirlineSource.loadAllAirlines(false).foreach { airline =>
