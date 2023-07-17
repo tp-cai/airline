@@ -236,9 +236,9 @@ class AirlineApplication @Inject()(cc: ControllerComponents) extends AbstractCon
           }
         }
         //it should first has link to it
-        if (LinkSource.loadLinksByAirlineId(airline.id).find( link => link.from.id == airport.id || link.to.id == airport.id).isEmpty) {
-          return Some("No active flight route operated by your airline flying to this city yet")
-        }
+        // if (LinkSource.loadLinksByAirlineId(airline.id).find( link => link.from.id == airport.id || link.to.id == airport.id).isEmpty) {
+        //   return Some("No active flight route operated by your airline flying to this city yet")
+        // }
         
         if (airport.countryCode != airline.getCountryCode().get) {
           val mutalRelationshipToAirlineCountry = CountrySource.getCountryMutualRelationship(airline.getCountryCode().get, airport.countryCode)
